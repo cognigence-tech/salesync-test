@@ -3,4 +3,7 @@ from . import views
 
 app_name = 'accounts'
 
-urlpatterns = []
+urlpatterns = [
+    path('', views.connection_list, name='connection_list'),
+    path('create/', views.create_connection, name='create-connection'),
+]

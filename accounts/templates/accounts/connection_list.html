@@ -1,0 +1,8 @@
+<h2>Your Connections</h2>
+
+<ul>
+    {% for connection in connections %}
+        <li>{{ connection.sender.app_name }} → {{ connection.receiver.app_name }} 
+        (Active: {{ connection.is_active }})</li>
+    {% endfor %}
+</ul>
