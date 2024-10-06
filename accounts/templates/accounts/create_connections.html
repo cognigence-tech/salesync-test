@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Connection</title>
+</head>
+<body>
+    <h1>Create Connection</h1>
+
+    <!-- Country selection form -->
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="country">Select Country:</label>
+        <select name="country" id="country" onchange="this.form.submit()">
+            <option value="">-- Select Country --</option>
+            <option value="IN" {% if country_selected == 'IN' %}selected{% endif %}>India</option>
+            <option value="US" {% if country_selected == 'US' %}selected{% endif %}>United States</option>
+            <option value="UK" {% if country_selected == 'UK' %}selected{% endif %}>United Kingdom</option>
+            <!-- Add more countries as needed -->
+        </select>
+    </form>
+
+    {% if connection_form %}
+        <!-- Application selection form -->
+        <h2>Available Applications in {{ country_selected }}</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ connection_form.as_p }}  <!-- Render the form fields -->
+            <button type="submit">Create Connection</button>
+        </form>
+    {% endif %}
+
+    {% if error_message %}
+        <div style="color: red;">{{ error_message }}</div>
+    {% endif %}
+</body>
+</html>

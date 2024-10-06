@@ -2,7 +2,7 @@
 
 <ul>
     {% for connection in connections %}
-        <li>{{ connection.sender.app_name }} → {{ connection.receiver.app_name }} 
+        <li>{{ connection.sender.app_name }} → {{ connection.receiver.app_name }} - {{connection.country}}
         (Active: {{ connection.is_active }})</li>
     {% endfor %}
 </ul>
